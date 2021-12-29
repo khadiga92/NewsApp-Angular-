@@ -1,0 +1,137 @@
+<form class="container mt-5" #signupForm="ngForm" (ngSubmit)='signUp(signupForm.value)'>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      ngModel
+      name="name"
+      #name="ngModel"
+      required
+      minlength="2"
+      placeholder="Enter your name"
+    />
+    <div class="error d-flex justify-content-center" *ngIf="name.touched && name.invalid">
+      <div *ngIf="name.errors?.['required']">
+        *Name is required*
+      </div>
+      <div *ngIf="name.errors?.['minlength']">
+        *Name minlength is
+        {{name.errors?.['minlength'].requiredLength}}... you have entered
+        {{name.errors?.['minlength'].actualLength}}
+        *
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input
+      type="number"
+      class="form-control"
+      id="age"
+      ngModel
+      name="age"
+      #age="ngModel"
+      required
+      minlength="2"
+      placeholder="Enter your Age"
+      (focus)='changeAge()'
+    />
+    <div class="error d-flex justify-content-center" *ngIf="age.touched && age.invalid">
+      <div *ngIf="age.errors?.['required']">
+        *Age is required*
+      </div>
+      <div *ngIf="age.errors?.['minlength']">
+        *Age minlength is
+        {{age.errors?.['minlength'].requiredLength}}... you have entered
+        {{age.errors?.['minlength'].actualLength}}
+        *
+      </div>
+    </div>
+  </div>
+  <div class="error d-flex justify-content-center" *ngIf='invalidAge'>{{message}}</div>
+
+  <div class="mb-3">
+    <label for="phone" class="form-label">Phone</label>
+    <input
+      type="number"
+      class="form-control"
+      id="phone"
+      ngModel
+      name="phone"
+      #phone="ngModel"
+      required
+      minlength="11"
+      placeholder="Enter your phone"
+    />
+    <div class="error d-flex justify-content-center" *ngIf="phone.touched && phone.invalid">
+      <div *ngIf="age.errors?.['required']">
+        *Phone is required*
+      </div>
+      <div *ngIf="phone.errors?.['minlength']">
+        *Phone minlength is
+        {{phone.errors?.['minlength'].requiredLength}}... you have entered
+        {{phone.errors?.['minlength'].actualLength}}
+        *
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      id="email"
+      name="email"
+      ngModel
+      #email="ngModel"
+      required
+      email
+      placeholder="Enter your Email"
+      (focus)='changeEmail()'
+    />
+    <div
+    class="error d-flex justify-content-center"
+    *ngIf="email.touched && email.invalid"
+  >
+    <div *ngIf="email.errors?.['required']">*Email is required*</div>
+    <div *ngIf="email.errors?.['email']">
+      *Please enter valid email*
+    </div>
+  </div>
+  </div>
+  <div class="error d-flex justify-content-center" *ngIf='invalidEmail'>Email already used</div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      ngModel
+      #password="ngModel"
+      required
+      minlength="6"
+      placeholder="Enter your password"
+    />
+    <div
+    class="error d-flex justify-content-center"
+    *ngIf="password.touched && password.invalid"
+  >
+    <div *ngIf="password.errors?.['required']">*Password is required*</div>
+    <div *ngIf="password.errors?.['minlength']">
+      *Password minlength is
+      {{password.errors?.['minlength'].requiredLength}}... you have entered
+      {{password.errors?.['minlength'].actualLength}}
+      *
+    </div>
+  </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

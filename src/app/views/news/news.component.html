@@ -1,0 +1,17 @@
+<p>news works!</p>
+
+  <section class="container">
+    <h1 class="text-center">All News</h1>
+    <div class="row d-flex justify-content-center">
+      <div class="card" style="width: 18rem;" *ngFor='let news of news;let i = index'>
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h5 class="card-title">{{news.title}}</h5>
+          <p class="card-text">{{news.description}}</p>
+          <a class="btn btn-success btn-sm" routerLink="/editNews/{{news._id}}">Update</a>
+          <a class="btn btn-danger btn-sm" (click)="deleteNews(news._id,i)">Delete</a>
+        </div>
+      </div>
+    </div>
+  </section>
+

@@ -1,0 +1,30 @@
+<p>add-news works!</p>
+<form class="container mt-5" [formGroup]='newsForm' (ngSubmit)="addNews(newsForm.value)">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+    type="text"
+    class="form-control"
+    id="title"
+    formControlName='title'
+    name="title" />
+    <div class="error d-flex justify-content-center"
+    *ngIf="newsValue['title'].touched && newsValue['title'].invalid">
+      <div *ngIf='newsValue["title"].errors?.["required"]'>*Title is requird*</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+    type="text"
+    class="form-control"
+    id="description"
+    formControlName='description'
+    name="description" />
+    <div class="error d-flex justify-content-center"
+      *ngIf="newsValue['description'].touched && newsValue['description'].invalid">
+      <div *ngIf='newsValue["description"].errors?.["required"]'>*Description is requird*</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="newsForm.invalid">Submit</button>
+</form>

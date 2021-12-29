@@ -1,0 +1,7 @@
+.error{
+  color: red;
+}
+
+.form-control.ng-invalid.ng-touched{
+  border:2px red solid;
+}

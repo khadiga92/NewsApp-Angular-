@@ -1,0 +1,57 @@
+<form class="container mt-5" #loginForm="ngForm" (ngSubmit)='logIn(loginForm.value)'>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      id="email"
+      name="email"
+      ngModel
+      #email="ngModel"
+      required
+      email
+      placeholder="Enter your Email"
+      (focus)='changeData()'
+    />
+    <div
+    class="error d-flex justify-content-center"
+    *ngIf="email.touched && email.invalid"
+  >
+    <div *ngIf="email.errors?.['required']">*Email is required*</div>
+    <div *ngIf="email.errors?.['email']">
+      *Please enter valid email*
+    </div>
+  </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      ngModel
+      #password="ngModel"
+      required
+      minlength="6"
+      placeholder="Enter your password"
+      (focus)='changeData()'
+    />
+    <div
+    class="error d-flex justify-content-center"
+    *ngIf="password.touched && password.invalid"
+  >
+    <div *ngIf="password.errors?.['required']">*Password is required*</div>
+  </div>
+  </div>
+
+  <div class="error d-flex justify-content-center" *ngIf='invalidLogIn'>Invalid Email or password</div>
+  <button type="submit" class="btn btn-primary" [disabled]='loginForm.invalid'>Submit</button>
+</form>
+<!-- <div *ngIf="password.errors?.['minlength']">
+  *Password minlength is
+  {{password.errors?.['minlength'].requiredLength}}... you have entered
+  {{password.errors?.['minlength'].actualLength}}
+  *
+</div> -->
